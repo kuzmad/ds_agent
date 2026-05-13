@@ -1,0 +1,9 @@
+from typing import Annotated, TypedDict, Optional
+from langgraph.graph.message import add_messages
+from langchain_core.messages import BaseMessage
+
+
+class AgentState(TypedDict):
+    messages: Annotated[list[BaseMessage], add_messages]
+    file_path: Optional[str]
+    task_description: str
