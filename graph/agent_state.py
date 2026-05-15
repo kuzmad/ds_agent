@@ -5,5 +5,8 @@ from langchain_core.messages import BaseMessage
 
 class AgentState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
-    file_path: Optional[str]
-    task_description: str
+    file_path: str
+    task_type: Optional[str]
+    target_column: Optional[str]
+    problem_description: Optional[str]
+    data_issues: Optional[list[str]]
