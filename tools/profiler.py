@@ -38,7 +38,7 @@ def profile_dataframe(file_path: str,  n_head: int = 3) -> ProfileResult:
     result_dict = {
         "shape": df.shape,
         "columns": list(df.columns),
-        "dtypes": df.dtypes.to_dict(),
+        "dtypes": {col: str(dtype) for col, dtype in df.dtypes.items()},
         "na_stat": (df.isna().sum(axis=0) / df.shape[0]).to_dict(),
         "head": df.head(n_head).to_dict(orient="records")
     }
