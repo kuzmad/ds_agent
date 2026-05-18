@@ -1,7 +1,7 @@
 from typing import Annotated, TypedDict, Optional
 from langgraph.graph.message import add_messages
 from langchain_core.messages import BaseMessage
-from graph.models import AnalysisResult
+from graph.models import AnalysisResult, ExtendedAnalysis
 
 
 class AgentState(TypedDict):
@@ -12,3 +12,4 @@ class AgentState(TypedDict):
     target_column: Optional[str]
     problem_description: Optional[str]
     data_issues: Optional[list[str]]
+    extended_analysis: Optional[ExtendedAnalysis]
