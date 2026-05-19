@@ -41,5 +41,6 @@ def analyst_node(state: AgentState) -> dict:
     result = analyst.invoke({"profile": profile, "query": last_message})
     return {
         "messages": [AIMessage(content=result.problem_description)],
-        "analysis_result": result
+        "analysis_result": result,
+        "df_columns": profile["columns"]
     }

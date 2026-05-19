@@ -17,3 +17,11 @@ class ExtendedAnalysis(BaseModel):
     date_string_columns: list[str] = Field(description="Список колонок, которые являтся датами, но хранятся в формате str")
     high_missing_columns: Optional[list[str]] = Field(description="Список колонок с высокой долей пропусков выше 90%")
     categorical_columns: list[str] = Field(description="Список колонок, которые являются категориальными переменными")
+
+class TargetConfirmation(BaseModel):
+    confirmed: bool = Field(description="Пользователь согласился с текущим значением")
+    value: str = Field(description="Итоговое значение — либо текущее, либо новое от пользователя")
+
+class IdColumnsConfirmation(BaseModel):
+    confirmed: bool = Field(description="Пользователь согласился с текущим списком")
+    value: list[str] = Field(description="Итоговый список колонок")

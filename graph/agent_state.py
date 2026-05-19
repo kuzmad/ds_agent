@@ -7,6 +7,7 @@ from graph.models import AnalysisResult, ExtendedAnalysis
 class AgentState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
     file_path: str
+    df_columns: Optional[list[str]]
     analysis_result: Optional[AnalysisResult]
     extended_analysis: Optional[ExtendedAnalysis]
     confirmed_target: Optional[str]
