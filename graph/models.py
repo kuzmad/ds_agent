@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 from enum import Enum
+from typing import Optional
 
 class TaskType(str, Enum):
     CLASSIFICATION = "classification"
@@ -13,6 +14,6 @@ class AnalysisResult(BaseModel):
 
 class ExtendedAnalysis(BaseModel):
     id_columns: list[str] = Field(description="Список колонок, которые потенциально являются идентификаторами")
-    date_string: list[str] = Field(description="Список колонок, которые являтся датами, но хранятся в формате str")
-    high_missing_columns: dict = Field(description="Список колонок с высоким порогом")
-    categorica_columns: list[str] = Field(description="Список колонок, которые являются категориальными переменными")
+    date_string_columns: list[str] = Field(description="Список колонок, которые являтся датами, но хранятся в формате str")
+    high_missing_columns: Optional[list[str]] = Field(description="Список колонок с высокой долей пропусков выше 90%")
+    categorical_columns: list[str] = Field(description="Список колонок, которые являются категориальными переменными")
