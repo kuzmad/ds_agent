@@ -44,3 +44,8 @@ def profile_dataframe(file_path: str,  n_head: int = 3) -> ProfileResult:
     }
     return result_dict
 
+def compute_correlation(file_path: str) -> dict:
+    df = read_file(file_path)
+    return df.select_dtypes(include="number").corr().to_dict()
+
+

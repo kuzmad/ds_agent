@@ -1,5 +1,5 @@
 from graph.agent_state import AgentState
-from tools.profiler import profile_dataframe
+from tools.profiler import profile_dataframe, compute_correlation
 from llm import llm
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import AIMessage
@@ -39,8 +39,10 @@ def analyst_node(state: AgentState) -> dict:
     last_message = messages[-1].content
     profile = profile_dataframe(state["file_path"])
     result = analyst.invoke({"profile": profile, "query": last_message})
+    correlation_matrix = compute_correlation(state["file_path"])
     return {
         "messages": [AIMessage(content=result.problem_description)],
         "analysis_result": result,
-        "df_columns": profile["columns"]
+        "df_columns": profile["columns"],
+        "correlation_matrix": correlation_matrix
     }

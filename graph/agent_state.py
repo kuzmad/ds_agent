@@ -12,3 +12,5 @@ class AgentState(TypedDict):
     extended_analysis: Optional[ExtendedAnalysis]
     confirmed_target: Optional[str]
     confirmed_id_columns: Optional[list[str]]
+    correlation_matrix: Optional[dict]
+    leakage_candidates: Optional[list[str]]
