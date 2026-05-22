@@ -48,4 +48,18 @@ def compute_correlation(file_path: str) -> dict:
     df = read_file(file_path)
     return df.select_dtypes(include="number").corr().to_dict()
 
+def get_leakage_candidates(
+        target_column: str,
+        corr_matrix: dict,
+        id_columns: list[str],
+        correlation_leak_threshold: float) -> list[str]:
+    feature_corrs = corr_matrix[target_column]
+    leakage_candidates = [
+        feature for feature, corr in feature_corrs.items()
+        if abs(corr) > correlation_leak_threshold
+            and feature != target_column
+            and feature not in id_columns
+            ]
+    return leakage_candidates
+
 

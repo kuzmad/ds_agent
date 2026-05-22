@@ -14,3 +14,4 @@ class AgentState(TypedDict):
     confirmed_id_columns: Optional[list[str]]
     correlation_matrix: Optional[dict]
     leakage_candidates: Optional[list[str]]
+    confirmed_drop_columns: Optional[list[str]]
